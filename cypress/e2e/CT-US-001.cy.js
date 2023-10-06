@@ -2,10 +2,12 @@ const credentials = require('../fixtures/credentials.json')
 
 describe('CT-US-001 | Cadastrar Usuário', function(){
   beforeEach(() => {
+    //Acessa a página de "Cadastro"
     cy.visit('https://usinnmodeler.vercel.app/cadastro')
   })
 
   it('SUCESSO - Cadastrar usuário', () => {
+    //Coloca as informações
     cy.get('[name="name"]').type(credentials.name)
     cy.get('[name="birthday"]').type(credentials.birthday)
     cy.get('[name="role"]').select(credentials.role)
@@ -19,14 +21,8 @@ describe('CT-US-001 | Cadastrar Usuário', function(){
     cy.get('[type="submit"]').click()
     cy.wait('@new-user').its('response.statusCode').should('eq', 200)
 
-    cy.get('input[type="email"]').type(credentials.name)
-    cy.get('input[type="password"]').type(credentials.password, {log: false})
-  
-    cy.get('[type="submit"]').click()
+    //Faz o login
+    cy.login_teste()
     cy.get('[id="dashboard"]').should('exist')
-  })
-
-  it.only('FALHA - Cadastrar usuário', () => {
-    
   })
 });

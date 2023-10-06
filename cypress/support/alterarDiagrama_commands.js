@@ -1,6 +1,6 @@
 /// <reference types="Cypress"/>
 
-Cypress.Commands.add('exportarDiagramas_teste', () => {
+Cypress.Commands.add('alterarDiagramas_teste', ()=>{
   cy.get(':nth-child(1) > #diagram-card > .card-header > :nth-child(1) > .fw-bold').click()
-  cy.get('[data-bs-target="#exportModalId"]').click()
+  cy.get('[src="/images/pontoDeAbertura.GIF"]').drag('#graph > svg')
 })
