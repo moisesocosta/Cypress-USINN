@@ -14,7 +14,7 @@ describe('CT-US-016 | Atualizar um diagrama existente', function(){
     cy.documentos_teste()
 
     //Adiciona uma alteração no diagrama
-    cy.alterarDiagramas()
+    cy.alterarDiagramas_teste()
 
     //Salva as alterações
     cy.get('#save > img').click()

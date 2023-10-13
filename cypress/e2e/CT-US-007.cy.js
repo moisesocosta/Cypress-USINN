@@ -25,7 +25,7 @@ describe('CT-US-007 | Sair do sistema', function(){
     cy.documentos_teste()
     
     //Adiciona uma alteração no diagrama
-    cy.alterarDiagramas()
+    cy.alterarDiagramas_teste()
 
     cy.get('#dropdownMenuButton').click()
     cy.get(':nth-child(2) > .dropdown-item').click()
