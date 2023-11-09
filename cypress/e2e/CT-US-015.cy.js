@@ -6,7 +6,7 @@ describe('CT-US-015 | Excluir diagramas', function(){
     cy.visit('https://usinnmodeler.vercel.app/login')
   })
 
-  it.only('SUCESSO - Excluir diagramas', () => {
+  it('SUCESSO - Excluir diagramas', () => {
     //Faz o login
     cy.login_teste(credentials.email, credentials.password)
 
@@ -16,8 +16,8 @@ describe('CT-US-015 | Excluir diagramas', function(){
     //Clica no botão de "Excluir"
     cy.excluirDiagramas_teste()
 
-    cy.get('.modal-body > .btn-primary').click()
-    cy.get('.swal2-popup').should('contain', 'Diagramas excluídos com sucesso')
+    cy.get('#RemoveDiagramModal > .modal-dialog > .modal-content > .modal-body > .btn-primary').click()
+    cy.get('.swal2-popup').should('contain', 'Diagramas removido com sucesso')
   })
 
   it('FALHA - Excluir diagramas', () => {

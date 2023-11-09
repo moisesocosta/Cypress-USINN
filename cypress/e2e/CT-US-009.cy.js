@@ -14,6 +14,7 @@ describe('CT-US-009 | Excluir perfil', function(){
     cy.documentos_teste()
     
     cy.get('#dropdownMenuButton').click()
+    cy.get('.container-fluid > .dropdown > .dropdown-menu > :nth-child(2) > .dropdown-item').click()
     //Ainda não tem como acessar a página de "Excluir perfil"...
   })
 });
