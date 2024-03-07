@@ -2,7 +2,11 @@
 
 ### Via Node.js
 ```bash
-# Instala o projeto e dependências para execução e desenvolvimento
-$ npm install
+# Instalar as dependências
+$ npm install cypress
 ```
-
+### Execução
+```bash
+# Executa o cypress
+$ npx cypress open
+```
