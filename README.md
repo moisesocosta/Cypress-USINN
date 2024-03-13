@@ -10,3 +10,8 @@ $ npm install cypress
 # Executa o cypress
 $ npx cypress open
 ```
+### Gravação
+```bash
+# Grava vídeos de cada caso de testes
+$ npx cypress run
+```
