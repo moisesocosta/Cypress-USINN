@@ -14,7 +14,8 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import 'cypress-plugin-api'
+import './cadastro_commands'
 import './login_commands'
 import './documentos_commands'
 import './compartilhados_commands'

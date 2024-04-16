@@ -4,15 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "cypress open",
+    "cy:override": "cypress run --browser edge --config",
+    "cy:run": "cypress run --spec 'cypress/e2e/produto-final/**/*'",
+    "cy:verify": "cypress verify",
+    "cy:info": "cypress info"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^13.6.6"
+    "cypress": "^13.6.6",
+    "cypress-drag-drop": "^1.1.1",
+    "cypress-plugin-api": "^2.11.1"
   },
   "devDependencies": {
-    "@4tw/cypress-drag-drop": "^2.2.5"
+    "@4tw/cypress-drag-drop": "^2.2.5",
+    "eslint-config-prettier": "^9.1.0"
   }
 }
