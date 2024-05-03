@@ -1,4 +1,4 @@
-const credentials = require('../../fixtures/credentials.json')
+const credentials = require('../../../fixtures/credentials.json')
 
 describe('CT-US-005 | Desfazer alterações', function(){
   beforeEach(() => {

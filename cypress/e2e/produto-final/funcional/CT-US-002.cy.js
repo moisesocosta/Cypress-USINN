@@ -1,5 +1,5 @@
-const credentials = require('../../fixtures/credentials.json')
-const credentialsWrong = require('../../fixtures/credentialsWrong.json')
+const credentials = require('../../../fixtures/credentials.json')
+const credentialsWrong = require('../../../fixtures/credentialsWrong.json')
 
 describe('CT-US-002 | Acesso ao sistema', function(){
   beforeEach(() => {

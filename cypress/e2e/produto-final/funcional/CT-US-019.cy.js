@@ -1,4 +1,4 @@
-const credentials = require('../../fixtures/credentials.json')
+const credentials = require('../../../fixtures/credentials.json')
 
 describe('CT-US-019 | Acessar um diagrama compartilhado comigo', function(){
   beforeEach(() => {

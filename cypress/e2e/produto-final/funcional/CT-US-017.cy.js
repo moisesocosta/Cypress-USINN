@@ -1,4 +1,4 @@
-const credentials = require('../../fixtures/credentials.json')
+const credentials = require('../../../fixtures/credentials.json')
 
 describe('CT-US-017 | Gerar um link de compartilhamento de diagrama', function(){
   beforeEach(() => {

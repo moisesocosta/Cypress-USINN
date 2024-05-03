@@ -1,5 +1,5 @@
-const credentials = require('../../fixtures/credentials.json')
-const credentialsWrong = require('../../fixtures/credentialsWrong.json')
+const credentials = require('../../../fixtures/credentials.json')
+const credentialsWrong = require('../../../fixtures/credentialsWrong.json')
 
 describe('CT-US-006 | Criar diagramas USINN', function(){
   beforeEach(() => {
