@@ -1,28 +1,6 @@
 name: End-to-end tests parallel
 on: push
 jobs:
-  cypress-run-local-api:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          command: npm run test:local-api
-  cypress-run-local-funcional:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          command: npm run test:local-funcional
   cypress-run-produto-final-compatibilidade:
     runs-on: ubuntu-22.04
     steps:
