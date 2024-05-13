@@ -26,7 +26,9 @@
   },
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.2.5",
+    "eslint": "^9.2.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-cypress": "^3.2.0",
     "playwright-webkit": "^1.44.0"
   }
 }

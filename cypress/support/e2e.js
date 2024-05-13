@@ -15,14 +15,7 @@
 
 // Import commands.js using ES2015 syntax:
 import 'cypress-plugin-api'
-import './cadastro_commands'
-import './login_commands'
-import './documentos_commands'
-import './compartilhados_commands'
-import './compartilharDiagramas_commands'
-import './alterarDiagrama_commands'
-import './excluirDiagramas_commands'
-import './exportarDiagrama_commands'
+import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
