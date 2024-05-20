@@ -19,11 +19,11 @@ describe('Realizar requisição de Login e Cadastro via API', function(){
       method: 'POST',
       url: 'http://localhost:8080',
       body: {
-        name: 'test',
-        email: 'anna123@gmail.com',
-        password: '12345678',
-        company: 'ufc',
-        office: 'estudante'
+        name: Cypress.env('USER_API'),
+        email: Cypress.env('USER_API_EMAIL'),
+        password: Cypress.env('USER_API_PASSWORD'),
+        company: Cypress.env('USER_API_COMPANY'),
+        office: Cypress.env('USER_API_OFFICE')
       },
       failOnStatusCode: false
     }).then((response) => {
