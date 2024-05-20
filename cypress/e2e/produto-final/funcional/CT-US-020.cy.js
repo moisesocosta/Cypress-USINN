@@ -1,5 +1,3 @@
-const credentials = require('../../../fixtures/credentials.json')
-
 describe('CT-US-020 | Favoritar diagramas', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
@@ -8,7 +6,7 @@ describe('CT-US-020 | Favoritar diagramas', function(){
 
   it('SUCESSO - Favoritar diagramas', () => {
     //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
     //Acessa a página de "Documentos"
     cy.documentos_teste()

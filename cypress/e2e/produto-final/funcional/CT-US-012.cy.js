@@ -1,21 +1,30 @@
-const credentials = require('../../../fixtures/credentials.json')
-
 describe('CT-US-012 | Listar diagramas compartilhados comigo', function(){
-  beforeEach(() => {
-    //Acessa a página de "Login"
-    cy.visit('https://usinnmodeler.vercel.app/login')
-  })
+  describe.only('Cenário 01: Lista de Diagramas Gerada com Sucesso', () => {
+    context('Dado que estou na homepage da USINN Modeler', () => {
+      beforeEach(() => {
+        //Acessa a página de "Cadastro"
+        cy.visit('https://usinnmodeler.vercel.app/login')
+        //Faz o login
+        cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
+      })
+  
+      context('Quando clico em Documentos', () => {
+        beforeEach(() => {
+          //Acessa a página de "Documentos"
+          cy.documentos_teste()
+        })
 
-  it('SUCESSO - Listar diagramas gerada com sucesso', () => {
-    //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
-
-    //Acessa a página de "Compartilhados"
-    cy.compartilhados_teste()
-  })
-
-  it('FALHA - Falha de conexão ao gerar lista de diagramas com sucesso', () => {
-    
-
+        context('E depois em “Compartilhados Comigo”', () => {
+          beforeEach(() => {
+            //Acessa a página de "Compartilhados"
+            cy.compartilhados_teste()
+          })
+          
+          it('Então visualizo a página Documentos com todos os diagramas compartilhados comigo.', () => {
+            
+          })
+        })
+      })
+    })
   })
 });

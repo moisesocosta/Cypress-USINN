@@ -1,14 +1,12 @@
-const credentials = require('../../../fixtures/credentials.json')
-
 describe('CT-US-013 | Baixar diagrama', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
     cy.visit('https://usinnmodeler.vercel.app/login')
   })
 
-  it.only('SUCESSO(Formato PNG) - Exportar diagrama com sucesso', () => {
+  it('SUCESSO(Formato PNG) - Exportar diagrama com sucesso', () => {
     //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
     //Acessa a página de Documentos
     cy.documentos_teste()
@@ -23,7 +21,7 @@ describe('CT-US-013 | Baixar diagrama', function(){
 
   it('SUCESSO(Formato JPEG) - Exportar diagrama com sucesso', () => {
     //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
     //Acessa a página de Documentos
     cy.documentos_teste()
@@ -38,7 +36,7 @@ describe('CT-US-013 | Baixar diagrama', function(){
 
   it('SUCESSO(Formato WEBP) - Exportar diagrama com sucesso', () => {
     //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
     //Acessa a página de Documentos
     cy.documentos_teste()
@@ -53,7 +51,7 @@ describe('CT-US-013 | Baixar diagrama', function(){
 
   it('SUCESSO(Formato SVG) - Exportar diagrama com sucesso', () => {
     //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
     //Acessa a página de Documentos
     cy.documentos_teste()
@@ -68,7 +66,7 @@ describe('CT-US-013 | Baixar diagrama', function(){
 
   it('SUCESSO(Formato PDF) - Exportar diagrama com sucesso', () => {
     //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
     //Acessa a página de Documentos
     cy.documentos_teste()
@@ -83,7 +81,7 @@ describe('CT-US-013 | Baixar diagrama', function(){
 
   it('FALHA - Cancelar - Exportar Diagrama ', () => {
     //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
     //Acessa a página de Documentos
     cy.documentos_teste()
@@ -93,10 +91,5 @@ describe('CT-US-013 | Baixar diagrama', function(){
 
     //Clica em cancelar
     cy.get('#exportModalId > .modal-dialog > .modal-content > .modal-header > #closeModal').click()
-  })
-
-  it('FALHA - Falha de conexão ao exportar diagrama', () => {
-    
-
   })
 });

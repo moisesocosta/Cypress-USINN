@@ -1,5 +1,3 @@
-const credentials = require('../../../fixtures/credentials.json')
-
 describe('CT-US-017 | Gerar um link de compartilhamento de diagrama', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
@@ -8,7 +6,7 @@ describe('CT-US-017 | Gerar um link de compartilhamento de diagrama', function()
 
   it('SUCESSO - Gerar um link de compartilhamento de diagrama', () => {
     //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
     cy.get('[id="dashboard"]').should('exist')
     cy.get(':nth-child(2) > .text-white').click()

@@ -1,7 +1,5 @@
-const credentials = require('../../../fixtures/credentials.json')
-
 describe('CT-US-004 | Salvar as alterações realizadas no diagrama', function(){
-  describe('Cenário 01: O sistema salva automaticamente minhas alterações', () => {
+  describe.only('Cenário 01: O sistema salva automaticamente minhas alterações', () => {
     context('Dado que estou na área de criação de diagramas', () => {
       beforeEach(() => {
         //Acessa a página de "Cadastro"
@@ -11,7 +9,7 @@ describe('CT-US-004 | Salvar as alterações realizadas no diagrama', function()
       context('Quando começo a criar um diagrama', () => {
         beforeEach(() => {
           //Faz o login
-          cy.login_teste(credentials.email, credentials.password)
+          cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
           //Acessa a página de "Documentos"
           cy.documentos_teste()
           cy.get('#btn-new').click()
@@ -40,12 +38,12 @@ describe('CT-US-004 | Salvar as alterações realizadas no diagrama', function()
       beforeEach(() => {
         //Acessa a página de "Cadastro"
         cy.visit('https://usinnmodeler.vercel.app/login')
+        //Faz o login
+        cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
       })
 
       context('Quando começo a criar um diagrama', () => {
         beforeEach(() => {
-          //Faz o login
-          cy.login_teste(credentials.email, credentials.password)
           //Acessa a página de "Documentos"
           cy.documentos_teste()
           cy.get('#btn-new').click()

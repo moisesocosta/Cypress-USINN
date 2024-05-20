@@ -1,24 +1,23 @@
-const credentials = require('../../../fixtures/credentials.json')
-
 describe('CT-US-011 | Listar diagramas', function(){
-  beforeEach(() => {
-    //Acessa a página de "Login"
-    cy.visit('https://usinnmodeler.vercel.app/login')
-  })
-
-  it('SUCESSO - Listar os meus diagramas', () => {
-    //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
-
-    //Acessa a página de "Documentos"
-    cy.documentos_teste()
-  })
-
-  it.only('FALHA(Falha na conexão) - Listar meus diagramas', () => {
-    //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
-
-    //Acessa a página de "Documentos"
-    cy.documentos_teste()
+  describe.only('Cenário 01: Lista de Diagramas Gerada com Sucesso', () => {
+    context('Dado que estou na homepage da USINN Modeler', () => {
+      beforeEach(() => {
+        //Acessa a página de "Cadastro"
+        cy.visit('https://usinnmodeler.vercel.app/login')
+        //Faz o login
+        cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
+      })
+  
+      context('Quando clico em Documentos', () => {
+        beforeEach(() => {
+          //Acessa a página de "Documentos"
+          cy.documentos_teste()
+        })
+        
+        it('Então visualizo a página Documentos com todos os meus diagramas.', () => {
+          cy.get('[id="documentsPage"]').should('exist')
+        })
+      })
+    })
   })
 });

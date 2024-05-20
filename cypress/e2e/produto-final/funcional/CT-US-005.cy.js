@@ -1,25 +1,43 @@
-const credentials = require('../../../fixtures/credentials.json')
-
 describe('CT-US-005 | Desfazer alterações', function(){
-  beforeEach(() => {
-    //Acessa a página de "Login"
-    cy.visit('https://usinnmodeler.vercel.app/login')
-  })
+  describe('Cenário 01: Desfazer erros feitos no diagrama', () => {
+    context('Dado que estou na área de criação de diagramas', () => {
+      beforeEach(() => {
+        //Acessa a página de "Cadastro"
+        cy.visit('https://usinnmodeler.vercel.app/login')
+        //Faz o login
+        cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
+      })
 
-  it.only('SUCESSO - Desfazer erros feitos no diagrama', () => {
-    //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
+      context('Quando começo a criar um diagrama', () => {
+        beforeEach(() => {
+          //Acessa a página de "Documentos"
+          cy.documentos_teste()
+          cy.get('#btn-new').click()
+        })
+        
+        context('E insiro um elemento no diagrama', () => {
+          beforeEach(() => {
+            cy.alterarDiagramas_teste()
+          })
 
-    //Acessa a página de "Documentos"
-    cy.documentos_teste()
-    
-    cy.alterarDiagramas_teste()
-    cy.get('#graph > svg > :nth-child(1) > :nth-child(2) > g > ellipse').click()
-    cy.get('#delete').click()
-    cy.get('#undo > img').click()
-  })
+          context('E apago esse elemento', () => {
+            beforeEach(() => {
+              cy.get('#graph > svg > :nth-child(1) > :nth-child(2) > g > ellipse').click()
+              cy.get('#delete').click()
+            })
 
-  it('FALHA - ', () => {
-    
+            context('E aperto Ctrl + Z Ou clico na função desfazer', () => {
+              beforeEach(() => {
+                cy.get('#undo > img').click()
+              })
+
+              it('Então o sistema refaz as últimas alterações.', () => {
+                cy.wait(500)
+              })
+            })
+          })
+        })
+      })
+    })
   })
 });
