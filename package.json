@@ -14,7 +14,8 @@
     "test:produto-final-funcional": "cypress run --spec 'cypress/e2e/produto-final/funcional'",
     "test:produto-final-seguranca": "cypress run --spec 'cypress/e2e/produto-final/seguranca/'",
     "test:produto-final-usabilidade": "cypress run --spec 'cypress/e2e/produto-final/usabilidade/'",
-    "test:webkit": "cypress run --browser webkit"
+    "test:webkit": "cypress run --browser webkit",
+    "lint": "eslint"
   },
   "keywords": [],
   "author": "Moisés Costa <mosolicos@gmail.com>",
