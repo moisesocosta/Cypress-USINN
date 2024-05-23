@@ -1,10 +1,4 @@
 describe('CT-US-014 | Gerenciar compartilhamento de diagramas', function(){
-  it('SUCESSO - Realizado com sucesso', () => {
-    //Acessa o menu de diagramas e clica em "Compartilhar"
-    cy.compartilharDiagramas_teste()
-    //Ainda não tem como gerenciar as opções de compartilhamento de diagrama...
-  })
-
   describe.only('Cenário 01: Realizado com sucesso', () => {
     context('Dado que estou na página Documentos', () => {
       beforeEach(() => {
