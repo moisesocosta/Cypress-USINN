@@ -1,5 +1,3 @@
-const credentials = require('../../../fixtures/credentials.json')
-
 describe('Visualizar compatibilidade da USINN Modeler com o navegador Google Chrome', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
