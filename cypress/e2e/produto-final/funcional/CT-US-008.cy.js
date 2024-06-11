@@ -1,5 +1,5 @@
 describe('CT-US-008 | Atualizar perfil', function(){
-  describe.only('Cenário 01: Atualizar perfil com Sucesso', () => {
+  describe('Cenário 01: Atualizar perfil com Sucesso', () => {
     context('Dado que estou na homepage da USINN Modeler', () => {
       beforeEach(() => {
         //Acessa a página de "Cadastro"

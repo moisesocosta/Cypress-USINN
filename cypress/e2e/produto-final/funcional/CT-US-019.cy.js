@@ -1,5 +1,5 @@
 describe('CT-US-019 | Acessar um diagrama compartilhado comigo', function(){
-  describe.only('Cenário 01: Acesso ao diagrama compartilhado realizado com sucesso', () => {
+  describe('Cenário 01: Acesso ao diagrama compartilhado realizado com sucesso', () => {
     context('Dado que recebi o link do diagrama compartilhado', () => {
       beforeEach(() => {
         //Acessa a página de "Cadastro"

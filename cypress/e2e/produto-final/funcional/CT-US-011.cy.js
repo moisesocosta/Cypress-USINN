@@ -1,5 +1,5 @@
 describe('CT-US-011 | Listar diagramas', function(){
-  describe.only('Cenário 01: Lista de Diagramas Gerada com Sucesso', () => {
+  describe('Cenário 01: Lista de Diagramas Gerada com Sucesso', () => {
     context('Dado que estou na homepage da USINN Modeler', () => {
       beforeEach(() => {
         //Acessa a página de "Cadastro"

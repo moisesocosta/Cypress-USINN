@@ -1,5 +1,5 @@
 describe('CT-US-007 | Sair do sistema', function(){
-  describe.only('Cenário 01: Sair da ferramenta com sucesso na homepage', () => {
+  describe('Cenário 01: Sair da ferramenta com sucesso na homepage', () => {
     context('Dado que estou na homepage da USINN Modeler', () => {
       beforeEach(() => {
         //Acessa a página de "Cadastro"

@@ -1,5 +1,5 @@
 describe('CT-US-014 | Gerenciar compartilhamento de diagramas', function(){
-  describe.only('Cenário 01: Realizado com sucesso', () => {
+  describe('Cenário 01: Realizado com sucesso', () => {
     context('Dado que estou na página Documentos', () => {
       beforeEach(() => {
         //Acessa a página de "Cadastro"

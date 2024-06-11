@@ -1,5 +1,5 @@
 describe('CT-US-017 | Gerar um link de compartilhamento de diagrama', function(){
-  describe.only('Cenário 01: Compartilhar diagrama com sucesso', () => {
+  describe('Cenário 01: Compartilhar diagrama com sucesso', () => {
     context('Dado que  estou na página de edição de diagramas', () => {
       beforeEach(() => {
         //Acessa a página de "Cadastro"

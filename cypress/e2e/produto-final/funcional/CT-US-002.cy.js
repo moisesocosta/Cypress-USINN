@@ -1,5 +1,5 @@
 describe('CT-US-002 | Acesso ao sistema', function(){
-  describe.only('Cenário 01: Login realizado com sucesso', () => {
+  describe('Cenário 01: Login realizado com sucesso', () => {
     context('Dado que estou na página de cadastro da USINN', () => {
       beforeEach(() => {
         //Acessa a página de "Cadastro"

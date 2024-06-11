@@ -1,5 +1,5 @@
 describe('CT-US-018 | Atalho para documentos', function(){
-  describe.only('Cenário 01: Diagrama adicionado com sucesso.', () => {
+  describe('Cenário 01: Diagrama adicionado com sucesso.', () => {
     context('Dado que estou na página Documentos', () => {
       beforeEach(() => {
         //Acessa a página de "Cadastro"

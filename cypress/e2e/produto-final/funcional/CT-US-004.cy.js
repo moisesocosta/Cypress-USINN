@@ -1,5 +1,5 @@
 describe('CT-US-004 | Salvar as alterações realizadas no diagrama', function(){
-  describe.only('Cenário 01: O sistema salva automaticamente minhas alterações', () => {
+  describe('Cenário 01: O sistema salva automaticamente minhas alterações', () => {
     context('Dado que estou na área de criação de diagramas', () => {
       beforeEach(() => {
         //Acessa a página de "Cadastro"

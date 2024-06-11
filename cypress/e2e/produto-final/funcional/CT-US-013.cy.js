@@ -154,7 +154,7 @@ describe('CT-US-013 | Exportar diagrama', function(){
     })
   })
 
-  describe.only('Cenário 02: Cancelar - Exportar Diagrama ', () => {
+  describe('Cenário 02: Cancelar - Exportar Diagrama ', () => {
     context('Dado que na página de Edição de Diagrama', () => {
       beforeEach(() => {
         //Acessa a página de "Cadastro"
