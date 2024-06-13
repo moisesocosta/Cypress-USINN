@@ -1,10 +1,10 @@
 describe('CT-US-001 | Cadastrar Usuários', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit('https://usinnmodeler.vercel.app/login')
+    cy.visit('https://usinnmodeler.vercel.app/cadastro')
   })
 
-  it('Cenário 01: Cadastro realizado com sucesso', () => {
+  it.only('Cenário 01: Cadastro realizado com sucesso', () => {
     //Coloca as informações
     cy.cadastro_teste(Cypress.env('USER_NAME'), Cypress.env('USER_BIRTHDAY'), Cypress.env('USER_ROLE'))
     cy.get('[name="email"]').type(Cypress.env('USER_EMAIL'))

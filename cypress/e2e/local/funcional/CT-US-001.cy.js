@@ -1,7 +1,7 @@
 describe('CT-US-001 | Cadastrar Usuários', function(){
   beforeEach(() => {
     //Acessa a página de "Cadastro"
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/cadastro')
   })
 
   it('Cenário 01: Cadastro realizado com sucesso', () => {
