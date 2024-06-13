@@ -8,7 +8,7 @@ describe('CT-US-016 | Atualizar um diagrama existente', function(){
 
   it('SUCESSO - Atualizar um diagrama existente', () => {
     //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
     //Acessa a página de Documentos
     cy.documentos_teste()

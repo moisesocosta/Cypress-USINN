@@ -2,10 +2,6 @@ describe('CT-US-014 | Gerenciar compartilhamento de diagramas', function(){
   beforeEach(() => {
     //Acessa a página de "Cadastro"
     cy.visit('https://usinnmodeler.vercel.app/login')
-    //Faz o login
-    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
-    //Acessa a página de "Documentos"
-    cy.documentos_teste()
   })
 
   it('Cenário 01: Realizado com sucesso', () => {

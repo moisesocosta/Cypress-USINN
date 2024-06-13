@@ -1,7 +1,5 @@
 describe('CT-US-005 | Desfazer alterações', function(){
   it('Cenário 01: Desfazer erros feitos no diagrama', () => {
-    //Acessa a página de "Cadastro"
-    cy.visit('https://usinnmodeler.vercel.app/login')
     //Faz o login
     cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 

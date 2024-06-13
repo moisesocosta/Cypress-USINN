@@ -1,24 +1,15 @@
-const credentials = require('../../fixtures/credentials.json')
-
 describe('CT-US-011 | Listar diagramas', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
     cy.visit('http://localhost:3000/login')
   })
 
-  it('SUCESSO - Listar os meus diagramas', () => {
+  it('Cenário 01: Lista de Diagramas Gerada com Sucesso', () => {
     //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
-
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
     //Acessa a página de "Documentos"
     cy.documentos_teste()
-  })
-
-  it.only('FALHA(Falha na conexão) - Listar meus diagramas', () => {
-    //Faz o login
-    cy.login_teste(credentials.email, credentials.password)
-
-    //Acessa a página de "Documentos"
-    cy.documentos_teste()
+        
+    cy.get('[id="documentsPage"]').should('exist')
   })
 });

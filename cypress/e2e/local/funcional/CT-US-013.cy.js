@@ -1,5 +1,3 @@
-const credentials = require('../../fixtures/credentials.json')
-
 describe('CT-US-013 | Baixar diagrama', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
