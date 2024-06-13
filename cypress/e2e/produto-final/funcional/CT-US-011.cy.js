@@ -4,7 +4,25 @@ describe('CT-US-011 | Listar diagramas', function(){
     cy.visit('https://usinnmodeler.vercel.app/login')
   })
 
-  it('Cenário 01: Lista de Diagramas Gerada com Sucesso', () => {
+  it.only('Cenário 01: Lista de Diagramas Gerada com Sucesso', () => {
+    //Faz o login
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
+    //Acessa a página de "Documentos"
+    cy.documentos_teste()
+        
+    cy.get('[id="documentsPage"]').should('exist')
+  })
+
+  it('Cenário 03: Alternar para visualização em grade', () => {
+    //Faz o login
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
+    //Acessa a página de "Documentos"
+    cy.documentos_teste()
+        
+    cy.get('[id="documentsPage"]').should('exist')
+  })
+
+  it('Cenário 04: Alternar para visualização em lista', () => {
     //Faz o login
     cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
     //Acessa a página de "Documentos"

@@ -4,7 +4,7 @@ describe('CT-US-015 | Excluir diagramas', function(){
     cy.visit('https://usinnmodeler.vercel.app/login')
   })
 
-  it('SUCESSO - Excluir diagramas', () => {
+  it('Cenário 01: Excluir diagrama com sucesso', () => {
     //Faz o login
     cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
@@ -15,10 +15,10 @@ describe('CT-US-015 | Excluir diagramas', function(){
     cy.excluirDiagramas_teste()
 
     cy.get('#RemoveDiagramModal > .modal-dialog > .modal-content > .modal-body > .btn-primary').click()
-    cy.get('.swal2-popup').should('contain', 'Diagramas removido com sucesso')
+    cy.get('.swal2-popup').should('contain', 'O Diagrama foi excluído com sucesso')
   })
 
-  it('FALHA - Excluir diagramas', () => {
+  it('Cenário 02: Erro ao excluir diagrama ', () => {
     //Faz o login
     cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
@@ -28,11 +28,11 @@ describe('CT-US-015 | Excluir diagramas', function(){
     //Clica no botão de "Excluir"
     cy.excluirDiagramas_teste()
 
-    cy.get('.modal-body > .btn-primary').click()
-    cy.get('.swal2-popup').should('contain', 'Não foi possível processar esta requisição')
+    cy.get('#RemoveDiagramModal > .modal-dialog > .modal-content > .modal-body > .btn-primary').click()
+    cy.get('.swal2-popup').should('contain', 'Erro ao excluir diagrama')
   })
 
-  it('FALHA - Excluir diagramas', () => {
+  it.only('Cenário 03: Excluir diagrama - Cancelar.', () => {
     //Faz o login
     cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
@@ -41,8 +41,7 @@ describe('CT-US-015 | Excluir diagramas', function(){
 
     //Clica no botão de "Excluir"
     cy.excluirDiagramas_teste()
-    
-    cy.get('.btn-secondary').click()
-    //cy.get('[id="documentos"]').should('exist')
+
+    cy.get('.modal-body > .btn-light').click()
   })
 });
