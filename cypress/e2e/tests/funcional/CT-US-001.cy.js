@@ -1,13 +1,15 @@
+import { faker } from '@faker-js/faker';
+
 describe('CT-US-001 | Cadastrar Usuários', function(){
   beforeEach(() => {
-    //Acessa a página de "Login"
-    cy.visit('https://usinnmodeler.vercel.app/cadastro')
+    //Acessa a página de "Cadastro"
+    cy.visit(`${Cypress.env('BASE_URL')}/cadastro`)
   })
 
-  it.only('Cenário 01: Cadastro realizado com sucesso', () => {
+  it('Cenário 01: Cadastro realizado com sucesso', () => {
     //Coloca as informações
     cy.cadastro_teste(Cypress.env('USER_NAME'), Cypress.env('USER_BIRTHDAY'), Cypress.env('USER_ROLE'))
-    cy.get('[name="email"]').type(Cypress.env('USER_EMAIL'))
+    cy.get('[name="email"]').type(faker.internet.email())
     cy.get('[name="password"]').type(Cypress.env('USER_PASSWORD'))
     cy.get('[name="gender"]').select(Cypress.env('USER_GENDER'))
     cy.get('[name="company"]').type(Cypress.env('USER_COMPANY'))

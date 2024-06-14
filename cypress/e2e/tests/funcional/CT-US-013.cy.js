@@ -1,7 +1,7 @@
 describe('CT-US-013 | Baixar diagrama', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit('http://localhost:3000/login')
+    cy.visit(`${Cypress.env('BASE_URL')}/login`)
   })
 
   it('Cenário 01: Exportar Diagrama com sucesso(Formato PNG)', () => {

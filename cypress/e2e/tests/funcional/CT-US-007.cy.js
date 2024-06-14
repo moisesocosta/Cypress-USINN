@@ -1,7 +1,7 @@
 describe('CT-US-007 | Sair do sistema', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit('http://localhost:3000/')
+    cy.visit(`${Cypress.env('BASE_URL')}/login`)
   })
 
   it('Cenário 01: Sair da ferramenta com sucesso na homepage', () => {
@@ -13,7 +13,7 @@ describe('CT-US-007 | Sair do sistema', function(){
     cy.get('#dropdownMenuButton').click()
         
     cy.get('.container-fluid > .dropdown > .dropdown-menu > :nth-child(4) > .dropdown-item').click()
-    cy.get('#Titulo').should('exist')
+    cy.get('h1').should('exist')
   })
 
   it('Cenário 02: Sair do sistema com alterações não salvas no diagrama', () => {

@@ -1,7 +1,7 @@
 describe('CT-US-005 | Desfazer alterações', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit('http://localhost:3000/login')
+    cy.visit(`${Cypress.env('BASE_URL')}/login`)
   })
 
   it('Cenário 01: Desfazer erros feitos no diagrama', () => {

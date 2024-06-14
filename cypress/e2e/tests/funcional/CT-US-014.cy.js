@@ -1,7 +1,7 @@
 describe('CT-US-014 | Gerenciar compartilhamento de diagramas', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit('http://localhost:3000/login')
+    cy.visit(`${Cypress.env('BASE_URL')}/login`)
   })
 
   it('Cenário 01: Realizado com sucesso', () => {

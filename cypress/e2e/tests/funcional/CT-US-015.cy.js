@@ -1,7 +1,7 @@
 describe('CT-US-015 | Excluir diagramas', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit('http://localhost:3000/login')
+    cy.visit(`${Cypress.env('BASE_URL')}/login`)
   })
 
   it('SUCESSO - Excluir diagramas', () => {

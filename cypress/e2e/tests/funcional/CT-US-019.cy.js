@@ -1,7 +1,7 @@
 describe('CT-US-019 | Atalho para documentos', function(){
   beforeEach(() => {
     //Acessa a página de "Cadastro"
-    cy.visit('https://usinnmodeler.vercel.app/login')
+    cy.visit(`${Cypress.env('BASE_URL')}/login`)
   })
 
   it('Cenário 01: Diagrama adicionado com sucesso.', () => {

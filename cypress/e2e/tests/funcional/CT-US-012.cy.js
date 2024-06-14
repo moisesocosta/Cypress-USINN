@@ -1,7 +1,7 @@
-describe('CT-US-011 | Listar diagramas', function(){
+describe('CT-US-012 | Listar diagramas compartilhados comigo', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit('http://localhost:3000/login')
+    cy.visit(`${Cypress.env('BASE_URL')}/login`)
   })
 
   it('Cenário 01: Lista de Diagramas Gerada com Sucesso', () => {
@@ -9,7 +9,7 @@ describe('CT-US-011 | Listar diagramas', function(){
     cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
     //Acessa a página de "Documentos"
     cy.documentos_teste()
-        
-    cy.get('[id="documentsPage"]').should('exist')
+    //Acessa a página de "Compartilhados"
+    cy.compartilhados_teste()
   })
 });
