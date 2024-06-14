@@ -1,7 +1,7 @@
 describe('CT-US-017 | Gerar um link de compartilhamento de diagrama', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit('http://localhost:3000/login')
+    cy.visit(`${Cypress.env('BASE_URL')}/login`)
   })
 
   it('Cenário 01: Compartilhar diagrama com sucesso', () => {

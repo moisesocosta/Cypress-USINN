@@ -1,7 +1,7 @@
 describe('CT-US-008 | Atualizar perfil', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit('http://localhost:3000/login')
+    cy.visit(`${Cypress.env('BASE_URL')}/login`)
   })
 
   it('Cenário 01: Atualizar perfil com Sucesso', () => {

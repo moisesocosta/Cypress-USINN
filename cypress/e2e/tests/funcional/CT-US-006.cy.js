@@ -1,7 +1,7 @@
 describe('CT-US-006 | Criar diagramas USINN', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit('http://localhost:3000/login')
+    cy.visit(`${Cypress.env('BASE_URL')}/login`)
   })
 
   it('Cenário 01: Entrar na página de Criação de diagrama com Sucesso', () => {

@@ -1,7 +1,7 @@
 describe('CT-US-004 | Salvar as alterações realizadas no diagrama', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit('https://usinnmodeler.vercel.app/login')
+    cy.visit(`${Cypress.env('BASE_URL')}/login`)
   })
 
   it('Cenário 01: O sistema salva automaticamente minhas alterações', () => {
