@@ -1,12 +1,22 @@
+import { faker } from '@faker-js/faker'
+
+const email = faker.internet.email()
+
 describe('CT-US-013 | Baixar diagrama', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
     cy.visit(`${Cypress.env('BASE_URL')}/login`)
   })
 
+  it('Preparo do CT-US-013', () => {
+    cy.novo_cadastro(email)
+    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.get('#btn-new').click()
+  })
+
   it('Cenário 01: Exportar Diagrama com sucesso(Formato PNG)', () => {
     //Faz o login
-    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
+    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
     //Acessa a página de "Documentos"
     cy.documentos_teste()
   
@@ -19,7 +29,7 @@ describe('CT-US-013 | Baixar diagrama', function(){
 
   it('Cenário 01: Exportar Diagrama com sucesso(Formato JPEG)', () => {
     //Faz o login
-    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
+    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
     //Acessa a página de "Documentos"
     cy.documentos_teste()
   
@@ -32,7 +42,7 @@ describe('CT-US-013 | Baixar diagrama', function(){
 
   it('Cenário 01: Exportar Diagrama com sucesso(Formato WEBP)', () => {
     //Faz o login
-    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
+    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
     //Acessa a página de "Documentos"
     cy.documentos_teste()
   
@@ -43,9 +53,9 @@ describe('CT-US-013 | Baixar diagrama', function(){
     cy.get('.swal2-popup').should('contain', 'Diagrama exportado com sucesso!')
   })
 
-  it('Cenário 01: Exportar Diagrama com sucesso(Formato SVG)', () => {
+  it('Cenário 01: Exportar Diagrama com sucesso(Formato PDF)', () => {
     //Faz o login
-    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
+    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
     //Acessa a página de "Documentos"
     cy.documentos_teste()
   
@@ -56,9 +66,9 @@ describe('CT-US-013 | Baixar diagrama', function(){
     cy.get('.swal2-popup').should('contain', 'Diagrama exportado com sucesso!')
   })
 
-  it('Cenário 01: Exportar Diagrama com sucesso(Formato PDF)', () => {
+  it('Cenário 01: Exportar Diagrama com sucesso(Formato SVG)', () => {
     //Faz o login
-    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
+    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
     //Acessa a página de "Documentos"
     cy.documentos_teste()
   
@@ -71,7 +81,7 @@ describe('CT-US-013 | Baixar diagrama', function(){
 
   it('Cenário 02: Cancelar - Exportar Diagrama ', () => {
     //Faz o login
-    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
+    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
     //Acessa a página de "Documentos"
     cy.documentos_teste()
   

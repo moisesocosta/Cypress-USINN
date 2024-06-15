@@ -5,7 +5,7 @@ describe('CT-US-010 | Recuperar a senha', function(){
   })
 
   it('SUCESSO - Recuperar a senha', () => {
-    cy.get('.d-flex > .text-decoration-none').click()
+    cy.get('a').contains('Esqueceu sua senha?').click()
     cy.get('.form-control').type(Cypress.env('USER_EMAIL'))
     cy.get('.btn').click()
     cy.visit('https://www.google.com/intl/pt-br/gmail/about/')
