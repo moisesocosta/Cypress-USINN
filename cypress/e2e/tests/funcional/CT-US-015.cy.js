@@ -1,22 +1,18 @@
-import { faker } from '@faker-js/faker'
-
-const email = faker.internet.email()
-
 describe('CT-US-015 | Excluir diagramas', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
     cy.visit(`${Cypress.env('BASE_URL')}/login`)
   })
 
-  it('Preparo do CT-US-015', () => {
-    cy.novo_cadastro(email)
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+it('Preparo do CT-US-015', () => {
+    cy.verificar_login(Cypress.env('USER_EMAIL'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
     cy.get('#btn-new').click()
   })
 
   it('SUCESSO - Excluir diagramas', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
     //Acessa a página de Documentos
     cy.documentos_teste()
@@ -30,9 +26,9 @@ describe('CT-US-015 | Excluir diagramas', function(){
 
   it('FALHA - Excluir diagramas', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
     cy.get('#btn-new').click()
-    cy.get('img:nth-child(1)').click()
+    cy.get('img.me-4').click()
 
     //Acessa a página de Documentos
     cy.documentos_teste()
@@ -46,9 +42,9 @@ describe('CT-US-015 | Excluir diagramas', function(){
 
   it('FALHA - Excluir diagramas', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
     cy.get('#btn-new').click()
-    cy.get('img:nth-child(1)').click()
+    cy.get('img.me-4').click()
 
     //Acessa a página de Documentos
     cy.documentos_teste()

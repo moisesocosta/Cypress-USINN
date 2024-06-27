@@ -44,23 +44,35 @@ Cypress.Commands.add('exportarDiagramas_teste', () => {
 })
 
 Cypress.Commands.add('login_teste', (user, password) => {
+  cy.visit(`${Cypress.env('BASE_URL')}/login`)
   cy.get('input[type="email"]').type(user)
   cy.get('input[type="password"]').type(password, {log: false})
   cy.get('[type="submit"]').click()
 })
 
-Cypress.Commands.add('novo_cadastro', (email) => {
-  cy.visit(`${Cypress.env('BASE_URL')}/cadastro`)
+Cypress.Commands.add('verificar_login', (email) => {
+  cy.api({
+    method: 'POST',
+    url: 'http://localhost:8080/api/signin',
+    body: {
+      email: email,
+      password: Cypress.env('USER_PASSWORD')
+    },
+    failOnStatusCode: false
+  }).then((response) => {
+    if(response.status !== 200){
+      cy.visit(`${Cypress.env('BASE_URL')}/cadastro`)
 
-  //Coloca as informações
-  cy.cadastro_teste(Cypress.env('USER_NAME'), Cypress.env('USER_BIRTHDAY'), Cypress.env('USER_ROLE'))
-  cy.get('[name="email"]').type(email)
-  cy.get('[name="password"]').type(Cypress.env('USER_PASSWORD'))
-  cy.get('[name="gender"]').select(Cypress.env('USER_GENDER'))
-  cy.get('[name="company"]').type(Cypress.env('USER_COMPANY'))
-  cy.get('[type="checkbox"]').click()
-  
-  cy.intercept('POST', '/api/signup').as('new-user')
-  cy.get('[type="submit"]').click()
-  cy.wait('@new-user').its('response.statusCode').should('eq', 200)
+      cy.cadastro_teste(Cypress.env('USER_NAME'), Cypress.env('USER_BIRTHDAY'), Cypress.env('USER_ROLE'))
+      cy.get('[name="email"]').type(email)
+      cy.get('[name="password"]').type(Cypress.env('USER_PASSWORD'))
+      cy.get('[name="gender"]').select(Cypress.env('USER_GENDER'))
+      cy.get('[name="company"]').type(Cypress.env('USER_COMPANY'))
+      cy.get('[type="checkbox"]').click()
+      
+      cy.intercept('POST', '/api/signup').as('new-user')
+      cy.get('[type="submit"]').click()
+      cy.wait('@new-user').its('response.statusCode').should('eq', 200)
+    }      
+  })
 })

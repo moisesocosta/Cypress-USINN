@@ -1,7 +1,3 @@
-import { faker } from '@faker-js/faker'
-
-const email = faker.internet.email()
-
 describe('CT-US-009 | Excluir perfil', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
@@ -9,12 +5,12 @@ describe('CT-US-009 | Excluir perfil', function(){
   })
 
   it('Preparo do CT-US-009', () => {
-    cy.novo_cadastro(email)
+    cy.verificar_login(Cypress.env('USER_EMAIL'))
   })
 
   it('Cenário 01: Excluir perfil com Sucesso', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
   
     //Acessa a página de "Documentos"
     cy.documentos_teste()
@@ -29,10 +25,10 @@ describe('CT-US-009 | Excluir perfil', function(){
   })
 
   it('Cenário 02: Cancelar o excluir perfil', () => {
-    cy.novo_cadastro(email)
+    cy.verificar_login(Cypress.env('USER_EMAIL'))
     
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
   
     //Acessa a página de "Documentos"
     cy.documentos_teste()
@@ -48,7 +44,7 @@ describe('CT-US-009 | Excluir perfil', function(){
 
   it('Cenário 03: Falha ao Excluir perfil ', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
   
     //Acessa a página de "Documentos"
     cy.documentos_teste()
@@ -63,10 +59,10 @@ describe('CT-US-009 | Excluir perfil', function(){
   })
 
   it('Cenário 04: Falha na conexão ao Excluir perfil', () => {
-    cy.novo_cadastro(email)
+    cy.verificar_login(Cypress.env('USER_EMAIL'))
     
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
   
     //Acessa a página de "Documentos"
     cy.documentos_teste()
@@ -82,8 +78,9 @@ describe('CT-US-009 | Excluir perfil', function(){
   })
 
   it('Cenário 05: Excluir perfil - Senha inválida', () => {    
+    cy.verificar_login(Cypress.env('USER_EMAIL'))
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
   
     //Acessa a página de "Documentos"
     cy.documentos_teste()

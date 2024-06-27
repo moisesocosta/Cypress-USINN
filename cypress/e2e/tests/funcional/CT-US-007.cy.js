@@ -1,7 +1,3 @@
-import { faker } from '@faker-js/faker'
-
-const email = faker.internet.email()
-
 describe('CT-US-007 | Sair do sistema', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
@@ -9,12 +5,12 @@ describe('CT-US-007 | Sair do sistema', function(){
   })
 
   it('Preparo do CT-US-007', () => {
-    cy.novo_cadastro(email)
+    cy.verificar_login(Cypress.env('USER_EMAIL'))
   })
 
   it('Cenário 01: Sair da ferramenta com sucesso na homepage', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
   
     //Acessa a página de "Documentos"
     cy.documentos_teste()
@@ -26,7 +22,7 @@ describe('CT-US-007 | Sair do sistema', function(){
 
   it('Cenário 02: Sair do sistema com alterações não salvas no diagrama', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
     //Acessa a página de "Documentos"
     cy.documentos_teste()
   
@@ -39,7 +35,7 @@ describe('CT-US-007 | Sair do sistema', function(){
 
   it('Cenário 03: Sair do sistema com alterações não salvas no diagrama', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
     //Acessa a página de "Documentos"
     cy.documentos_teste()
   

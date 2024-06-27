@@ -1,7 +1,3 @@
-import { faker } from '@faker-js/faker'
-
-const email = faker.internet.email()
-
 describe('CT-US-017 | Gerar um link de compartilhamento de diagrama', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
@@ -9,14 +5,14 @@ describe('CT-US-017 | Gerar um link de compartilhamento de diagrama', function()
   })
 
   it('Preparo do CT-US-017', () => {
-    cy.novo_cadastro(email)
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.verificar_login(Cypress.env('USER_EMAIL'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
     cy.get('#btn-new').click()
   })
 
   it('Cenário 01: Compartilhar diagrama com sucesso', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
     //Acessa a página de "Documentos"
     cy.documentos_teste()
   
@@ -28,7 +24,7 @@ describe('CT-US-017 | Gerar um link de compartilhamento de diagrama', function()
 
   it('Cenário 04: Cancelar', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
     //Acessa a página de "Documentos"
     cy.documentos_teste()
   
