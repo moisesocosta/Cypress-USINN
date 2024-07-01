@@ -1,26 +1,27 @@
 # Cypress-USINN
 
-### Passo a passo
-1. Clone o repositório do backend: `git clone https://github.com/moisesocosta/Cypress-USINN`
-3. Importe o projeto em sua IDE preferida.
-4. Instale as dependências
-```bash
-$ npm install
-```
-5. Executa o Cypress
-```bash
-$ npx cypress open
-```
-### Gravação dos testes
-```bash
-$ npx cypress run
-```
-### Gravação de testes específicos
-```bash
-$ npx cypress run --spec cypress/e2e/**/**.cy.js
-```
-## Run tests
-```shell
-$ docker run -it -v $PWD:/e2e -w /e2e cypress/included:12.3.0
-# runs Cypress tests from the current folder
-```
+## Pré-requisitos
+
+É necessário ter o Node.js e o npm instalados para executar este projeto.
+
+> Eu usei as versões `v20.14.0` e `10.8.1` do Node.js e do npm, respectivamente. Sugiro que você use as mesmas versões ou versões posteriores.
+
+## Instalação
+
+Execute o `npm install` (ou `npm i` para a versão curta) para instalar as dependências do desenvolvimento.
+
+## Testes
+
+> Nota: Antes de executar os testes, faça uma cópia do arquivo `cypress.env.example.json` como `cypress.env.json`, que, no mundo real, você atualizaria com credenciais válidas.
+>
+> O arquivo `cypress.env.json` está incluído em [`.gitignore`](./.gitignore) e você está seguro de que as informações confidenciais não serão versionadas.
+
+Execute `npm test` (ou `npm t` para a versão curta) para executar o teste no modo headless.
+
+Ou execute `npm start` para abrir o Cypress no modo interativo.
+
+## Apoie este projeto
+
+Se você quiser apoiar este projeto, deixe uma ⭐.
+
+___

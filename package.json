@@ -1,7 +1,7 @@
 {
   "name": "cypress-usinn",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projeto de testes automatizados para o sistema USINN MODELER",
   "main": "index.js",
   "scripts": {
     "start": "cypress open",
