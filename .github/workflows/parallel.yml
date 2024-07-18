@@ -1,59 +1,37 @@
 name: End-to-end tests parallel
 on: push
 jobs:
-  cypress-run-produto-final-compatibilidade:
+  cypress-run-api:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-      - name: Install Dependencies
-        run: npm ci
+      # Install npm dependencies, cache them correctly
+      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          command: npm run test:produto-final-compatibilidade
-      - name: Upload Cypress Artifacts
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      - name: Upload Cypress Videos
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: cypress-videos
-          path: cypress/videos
-
-  cypress-run-produto-final-funcional:
+          command: npm run test:api
+  cypress-run-compatibilidade:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-      - name: Install Dependencies
-        run: npm ci
+      # Install npm dependencies, cache them correctly
+      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          command: npm run test:produto-final-funcional
-      - name: Upload Cypress Artifacts
-        if: always()
-        uses: actions/upload-artifact@v3
+          command: npm run test:compatibilidade
+  cypress-run-funcional:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Install npm dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
         with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      - name: Upload Cypress Videos
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: cypress-videos
-          path: cypress/videos
+          command: npm run test:funcional
 

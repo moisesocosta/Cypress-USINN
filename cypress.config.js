@@ -8,6 +8,5 @@ module.exports = defineConfig({
     chromeWebSecurity: false,
     video: true,
     experimentalWebKitSupport: true,
-    projectId: "p9t27r"
   },
 });
