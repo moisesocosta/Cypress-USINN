@@ -1,37 +1,59 @@
 name: End-to-end tests parallel
-on: push
+
+on: 
+  push:
+    branches:
+      - main
+
 jobs:
   cypress-run-api:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          command: npm run test:api
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with: 
+          node-version: v20.14.0
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests
+        run: npm run test:api
+
   cypress-run-compatibilidade:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          command: npm run test:compatibilidade
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with: 
+          node-version: v20.14.0
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests
+        run: npm run test:compatibilidade
+
   cypress-run-funcional:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          command: npm run test:funcional
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with: 
+          node-version: v20.14.0
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests
+        run: npm run test:funcional
 
