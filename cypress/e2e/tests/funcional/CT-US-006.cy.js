@@ -1,15 +1,17 @@
 import { faker } from '@faker-js/faker'
+import LoginPage from '../../../pages/loginPage';
+import RegistrationPage from '../../../pages/registrationPage'
 
 const email = faker.internet.email()
 
 describe('CT-US-006 | Criar diagramas USINN', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit(`${Cypress.env('BASE_URL')}/login`)
+    loginPage.accessLoginPage()
   })
 
   it('Preparo do CT-US-006', () => {
-    cy.novo_cadastro(email)
+    registrationPage.newRegistration(Cypress.env('USER_NAME'), Cypress.env('USER_BIRTHDAY'), Cypress.env('USER_ROLE'), email, Cypress.env('USER_PASSWORD'), Cypress.env('USER_GENDER'), Cypress.env('USER_COMPANY'))
   })
 
   it('Cenário 01: Entrar na página de Criação de diagrama com Sucesso', () => {

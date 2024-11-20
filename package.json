@@ -19,7 +19,8 @@
   "dependencies": {
     "cypress": "^13.6.6",
     "cypress-drag-drop": "^1.1.1",
-    "cypress-plugin-api": "^2.11.1"
+    "cypress-plugin-api": "^2.11.1",
+    "cypress-usinn": "file:"
   },
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.2.5",

@@ -1,61 +1,48 @@
 import { faker } from '@faker-js/faker'
+import RegistrationPage from '../../../pages/registrationPage';
+import LoginPage from '../../../pages/loginPage';
 
 const email = faker.internet.email()
+const registrationPage = new RegistrationPage()
+const loginPage = new LoginPage()
 
 describe('CT-US-002 | Acesso ao sistema', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit(`${Cypress.env('BASE_URL')}/login`)
+    loginPage.accessLoginPage()
   })
 
   it('Preparo do CT-US-002', () => {
-    cy.novo_cadastro(email)
+    registrationPage.newRegistration(Cypress.env('USER_NAME'), Cypress.env('USER_BIRTHDAY'), Cypress.env('USER_ROLE'), email, Cypress.env('USER_PASSWORD'), Cypress.env('USER_GENDER'), Cypress.env('USER_COMPANY'))
   })
 
   it('Cenário 01: Login realizado com sucesso', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
-    
-    cy.get('[id="dashboard"]').should('exist')
+    loginPage.loginSuccess(email, Cypress.env('USER_PASSWORD'))
   })
 
   it('Cenário 02: Inserção de dados inválidos(Email inválido)', () => {
     //Faz o login
-    cy.login_teste(Cypress.env('USER_WRONG_EMAIL'), Cypress.env('USER_PASSWORD'))
-    
-    cy.get('[id="dashboard"]').should('not.exist')
-    cy.get('.swal2-popup').should('contain', 'E-mail ou senha inválidos')
+    loginPage.loginWithEmailInvalid(Cypress.env('USER_WRONG_EMAIL'), Cypress.env('USER_PASSWORD'))
   })
 
   it('Cenário 02: Inserção de dados inválidos(Senha inválida)', () => {
     //Faz o login
-    cy.login_teste(Cypress.env('USER_EMAIL'), Cypress.env('USER_WRONG_PASSWORD'))
-    
-    cy.get('[id="dashboard"]').should('not.exist')
-    cy.get('.swal2-popup').should('contain', 'E-mail ou senha inválidos')
+    loginPage.loginWithPasswordInvalid(Cypress.env('USER_EMAIL'), Cypress.env('USER_WRONG_PASSWORD'))
   })
 
   it('Cenário 02: Inserção de dados inválidos(Email e senha diferentes)', () => {
     //Faz o login
-    cy.login_teste(Cypress.env('USER_WRONG_EMAIL'), Cypress.env('USER_WRONG_PASSWORD'))
-    
-    cy.get('[id="dashboard"]').should('not.exist')
-    cy.get('.swal2-popup').should('contain', 'E-mail ou senha inválidos')
+    loginPage.loginInvalid(Cypress.env('USER_WRONG_EMAIL'), Cypress.env('USER_WRONG_PASSWORD'))
   })
 
   it('Cenário 02: Inserção de dados inválidos(Domínio diferente)', () => {
     //Faz o login
-    cy.login_teste(Cypress.env('USER_EMAIL_WRONG_DOMAIN'), Cypress.env('USER_PASSWORD'))
-    
-    cy.get('[id="dashboard"]').should('not.exist')
-    cy.get('.swal2-popup').should('contain', 'E-mail ou senha inválidos')
+    loginPage.loginWithDomainInvalid(Cypress.env('USER_EMAIL_WRONG_DOMAIN'), Cypress.env('USER_WRONG_PASSWORD'))
   })
 
   it('Cenário 02: Inserção de dados inválidos(Domínio e senha diferentes)', () => {
     //Faz o login
-    cy.login_teste(Cypress.env('USER_EMAIL_WRONG_DOMAIN'), Cypress.env('USER_WRONG_PASSWORD'))
-    
-    cy.get('[id="dashboard"]').should('not.exist')
-    cy.get('.swal2-popup').should('contain', 'E-mail ou senha inválidos')
+    loginPage.loginWithDomainAndPasswordInvalid(Cypress.env('USER_EMAIL_WRONG_DOMAIN'), Cypress.env('USER_WRONG_PASSWORD'))
   })
 });
