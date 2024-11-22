@@ -1,13 +1,16 @@
 name: End-to-end tests parallel
 
-on: 
+on:
   push:
     branches:
       - main
 
 jobs:
-  cypress-run-api:
+  cypress-run:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        test-type: [api, funcional]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,83 +24,20 @@ jobs:
         run: npm install
 
       - name: Run Cypress tests
-        run: npm run test:api
+        run: npm run test:${{ matrix.test-type }}
 
       - name: Upload Cypress screenshots
-        if: failure()
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-screenshots-api
+          name: cypress-screenshots-${{ matrix.test-type }}
           path: cypress/screenshots
           if-no-files-found: ignore
 
       - name: Upload Cypress videos
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-videos-api
-          path: cypress/videos
-          if-no-files-found: ignore
-
-  cypress-run-compatibilidade:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with: 
-          node-version: v20.14.0
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Cypress tests
-        run: npm run test:compatibilidade
-
-      - name: Upload Cypress screenshots
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-screenshots-compatibilidade
-          path: cypress/screenshots
-          if-no-files-found: ignore
-
-      - name: Upload Cypress videos
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-videos-compatibilidade
-          path: cypress/videos
-          if-no-files-found: ignore
-
-  cypress-run-funcional:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with: 
-          node-version: v20.14.0
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Cypress tests
-        run: npm run test:funcional
-
-      - name: Upload Cypress screenshots
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-screenshots-funcional
-          path: cypress/screenshots
-          if-no-files-found: ignore
-
-      - name: Upload Cypress videos
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-videos-funcional
+          name: cypress-videos-${{ matrix.test-type }}
           path: cypress/videos
           if-no-files-found: ignore
