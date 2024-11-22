@@ -1,39 +1,33 @@
-import { faker } from '@faker-js/faker'
+import HomePage from '../../../pages/homePage';
+import LoginPage from '../../../pages/loginPage';
+import DashboardPage from '../../../pages/dashboardPage';
+import DocumentsPage from '../../../pages/documentsPage';
+import DiagramEditionPage from '../../../pages/diagramEditionPage';
 
-const email = faker.internet.email()
+const homePage = new HomePage()
+const loginPage = new LoginPage()
+const dashboardPage = new DashboardPage()
+const documentsPage = new DocumentsPage()
+const diagramEditionPage = new DiagramEditionPage()
 
 describe('CT-US-004 | Salvar as alterações realizadas no diagrama', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit(`${Cypress.env('BASE_URL')}/login`)
-  })
-
-  it('Preparo do CT-US-004', () => {
-    cy.novo_cadastro(email)
+    loginPage.accessLoginPage()
   })
 
   it('Cenário 01: O sistema salva automaticamente minhas alterações', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
-    //Acessa a página de "Documentos"
-    cy.documentos_teste()
-    cy.get('#btn-new').click()
+    loginPage.loginSuccess(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
-    cy.get('.me-4').click()
-        
-    cy.documentos_teste()
-    cy.get(':nth-child(1) > #diagram-card > .card-header > :nth-child(1) > .fw-bold').click()
-  })
+    dashboardPage.accessExistingDiagram()
+    diagramEditionPage.makeChangesOnDiagram()
+    diagramEditionPage.logOut()  
+    
+    homePage.accessLoginPage()  
+    loginPage.loginSuccess(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
-  it('Cenário 02: O sistema não salva automaticamente minhas alterações', () => {
-    //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
-
-    //Acessa a página de "Documentos"
-    cy.documentos_teste()
-    cy.get('#btn-new').click()
-        
-    cy.get('.me-4').click()
-    cy.documentos_teste()
+    documentsPage.accessDocumentsPage()
+    dashboardPage.accessExistingDiagram()
   })
 });

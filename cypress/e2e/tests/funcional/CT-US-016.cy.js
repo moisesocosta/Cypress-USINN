@@ -1,31 +1,34 @@
-import { faker } from '@faker-js/faker'
+import LoginPage from '../../../pages/loginPage';
+import DashboardPage from '../../../pages/dashboardPage';
+import DiagramEditionPage from '../../../pages/diagramEditionPage';
 
-const email = faker.internet.email()
+const loginPage = new LoginPage()
+const dashboardPage = new DashboardPage()
+const diagramEditionPage = new DiagramEditionPage()
 
 describe('CT-US-016 | Atualizar um diagrama existente', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit(`${Cypress.env('BASE_URL')}/login`)
+    loginPage.accessLoginPage()
   })
 
-  it('Preparo do CT-US-016', () => {
-    cy.novo_cadastro(email)
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
-    cy.get('#btn-new').click()
-  })
-
-  it('SUCESSO - Atualizar um diagrama existente', () => {
+  it('Cenário 01: Diagrama Atualizado com sucesso', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    loginPage.loginSuccess(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
 
-    //Acessa a página de Documentos
-    cy.documentos_teste()
+    dashboardPage.accessExistingDiagram()
+    diagramEditionPage.makeChangesOnDiagram()
+    diagramEditionPage.saveChanges()
 
-    //Adiciona uma alteração no diagrama
-    cy.alterarDiagramas_teste()
+    dashboardPage.accessExistingDiagram()
+  })
 
-    //Salva as alterações
-    cy.get('#save > img').click()
-    cy.get('.swal2-popup').should('contain', 'Diagrama salvo com sucesso!')
+  it('Cenário 04: Cancelar atualização de diagrama', () => {
+    //Faz o login
+    loginPage.loginSuccess(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
+
+    dashboardPage.accessExistingDiagram()
+    diagramEditionPage.makeChangesOnDiagram()
+    diagramEditionPage.returnHomePage()
   })
 });
