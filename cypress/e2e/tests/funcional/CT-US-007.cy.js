@@ -1,52 +1,46 @@
 import { faker } from '@faker-js/faker'
+import RegistrationPage from '../../../pages/registrationPage';
+import LoginPage from '../../../pages/loginPage';
+import DashboardPage from '../../../pages/dashboardPage';
+import DiagramEditionPage from '../../../pages/diagramEditionPage';
 
 const email = faker.internet.email()
+const registrationPage = new RegistrationPage()
+const loginPage = new LoginPage()
+const dashboardPage = new DashboardPage()
+const diagramEditionPage = new DiagramEditionPage()
 
 describe('CT-US-007 | Sair do sistema', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit(`${Cypress.env('BASE_URL')}/login`)
+    loginPage.accessLoginPage()
   })
 
-  it('Preparo do CT-US-007', () => {
-    cy.novo_cadastro(email)
+  it.only('Preparo do CT-US-007', () => {
+    registrationPage.newRegistration(Cypress.env('USER_NAME'), Cypress.env('USER_BIRTHDAY'), Cypress.env('USER_ROLE'), email, Cypress.env('USER_PASSWORD'), Cypress.env('USER_GENDER'), Cypress.env('USER_COMPANY'))
   })
 
   it('Cenário 01: Sair da ferramenta com sucesso na homepage', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
-  
-    //Acessa a página de "Documentos"
-    cy.documentos_teste()
-    cy.get('#dropdownMenuButton').click()
-        
-    cy.get('.container-fluid > .dropdown > .dropdown-menu > :nth-child(4) > .dropdown-item').click()
-    cy.get('h1').should('exist')
+    loginPage.loginSuccess(email, Cypress.env('USER_PASSWORD'))
+    dashboardPage.logOut()
   })
 
   it('Cenário 02: Sair do sistema com alterações não salvas no diagrama', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
-    //Acessa a página de "Documentos"
-    cy.documentos_teste()
+    loginPage.loginSuccess(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
   
-    //Adiciona uma alteração no diagrama
-    cy.alterarDiagramas_teste()
-    cy.get('#dropdownMenuButton').click()
-        
-    cy.get(':nth-child(4) > .dropdown-item').click()
+    dashboardPage.accessExistingDiagram()
+    diagramEditionPage.makeChangesOnDiagram()
+    diagramEditionPage.logOut()
   })
 
   it('Cenário 03: Sair do sistema com alterações não salvas no diagrama', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
-    //Acessa a página de "Documentos"
-    cy.documentos_teste()
+    loginPage.loginSuccess(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'))
   
-    //Adiciona uma alteração no diagrama
-    cy.alterarDiagramas_teste()
-    cy.get('#dropdownMenuButton').click()
-        
-    cy.get(':nth-child(4) > .dropdown-item').click()
+    dashboardPage.accessExistingDiagram()
+    diagramEditionPage.makeChangesOnDiagram()
+    diagramEditionPage.logOut()
   })
 });

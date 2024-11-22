@@ -1,18 +1,18 @@
 class RegistrationPage{
   selectorsList(){
     const selectors = {
-      nameField:"[name='name']",
-      emailField:"[name='email']",
-      passwordField:"[name='password']",
-      birthdayField:"[name='birthday']",
-      roleField:"[name='role']",
-      genderField:"[name='gender']",
-      companyField:"[name='company']",
-      checkboxButton:"[type='checkbox']",
-      submitButton:"[type='submit']",
-      successCredentialAlert:".swal2-popup",
-      wrongCredentialAlert:".invalid-feedback",
-      loginPageButton:".text-reset"
+      nameField: "[name='name']",
+      emailField: "[name='email']",
+      passwordField: "[name='password']",
+      birthdayField: "[name='birthday']",
+      roleField: "[name='role']",
+      genderField: "[name='gender']",
+      companyField: "[name='company']",
+      checkboxButton: "[type='checkbox']",
+      submitButton: "[type='submit']",
+      successCredentialAlert: ".swal2-popup",
+      wrongCredentialAlert: ".invalid-feedback",
+      loginPageButton: ".text-reset"
     }
 
     return selectors

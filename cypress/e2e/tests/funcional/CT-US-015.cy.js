@@ -1,62 +1,34 @@
-import { faker } from '@faker-js/faker'
+import LoginPage from '../../../pages/loginPage';
+import DashboardPage from '../../../pages/dashboardPage';
+import DocumentsPage from './../../../pages/documentsPage';
 
-const email = faker.internet.email()
+const loginPage = new LoginPage()
+const dashboardPage = new DashboardPage()
+const documentsPage = new DocumentsPage()
 
 describe('CT-US-015 | Excluir diagramas', function(){
   beforeEach(() => {
     //Acessa a página de "Login"
-    cy.visit(`${Cypress.env('BASE_URL')}/login`)
+    loginPage.accessLoginPage()
   })
 
-  it('Preparo do CT-US-015', () => {
-    cy.novo_cadastro(email)
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
-    cy.get('#btn-new').click()
-  })
-
-  it('SUCESSO - Excluir diagramas', () => {
+  it('Cenário 01: Excluir diagrama com sucesso', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
+    loginPage.loginSuccess(Cypress.env('USER_EMAIL2'), Cypress.env('USER_PASSWORD'))
 
     //Acessa a página de Documentos
-    cy.documentos_teste()
+    dashboardPage.accessDocumentsPage()
 
-    //Clica no botão de "Excluir"
-    cy.excluirDiagramas_teste()
-
-    cy.get('#RemoveDiagramModal > .modal-dialog > .modal-content > .modal-body .btn-primary').click()
-    cy.get('.swal2-popup').should('contain', 'O Diagrama foi excluído com sucesso')
+    documentsPage.deleteDiagram()
   })
 
-  it('FALHA - Excluir diagramas', () => {
+  it('Cenário 03: Excluir diagrama - Cancelar', () => {
     //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
-    cy.get('#btn-new').click()
-    cy.get('img:nth-child(1)').click()
-
-    //Acessa a página de Documentos
-    cy.documentos_teste()
-
-    //Clica no botão de "Excluir"
-    cy.excluirDiagramas_teste()
-
-    cy.get('#RemoveDiagramModal > .modal-dialog > .modal-content > .modal-body .btn-primary').click()
-    cy.get('.swal2-popup').should('contain', 'Não foi possível processar esta requisição')
-  })
-
-  it('FALHA - Excluir diagramas', () => {
-    //Faz o login
-    cy.login_teste(email, Cypress.env('USER_PASSWORD'))
-    cy.get('#btn-new').click()
-    cy.get('img:nth-child(1)').click()
-
-    //Acessa a página de Documentos
-    cy.documentos_teste()
-
-    //Clica no botão de "Excluir"
-    cy.excluirDiagramas_teste()
+    loginPage.loginSuccess(Cypress.env('USER_EMAIL2'), Cypress.env('USER_PASSWORD'))
     
-    cy.get('#RemoveDiagramModal > .modal-dialog > .modal-content > .modal-body .btn-light').click()
-    //cy.get('[id="documentos"]').should('exist')
+    //Acessa a página de Documentos
+    dashboardPage.accessDocumentsPage()
+
+    documentsPage.cancelDeleteDiagram()
   })
 });
