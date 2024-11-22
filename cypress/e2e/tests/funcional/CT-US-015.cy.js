@@ -7,10 +7,10 @@ const dashboardPage = new DashboardPage()
 const documentsPage = new DocumentsPage()
 
 describe('CT-US-015 | Excluir diagramas', function(){
-  beforeEach(() => {
+  //beforeEach(() => {
     //Acessa a página de "Login"
-    loginPage.accessLoginPage()
-  })
+    //loginPage.accessLoginPage()
+  //})
 
   it('Cenário 01: Excluir diagrama com sucesso', () => {
     //Faz o login
