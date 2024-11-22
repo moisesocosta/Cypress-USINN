@@ -1,5 +1,10 @@
 name: End-to-end tests
-on: push
+
+on: 
+  push:
+    branches:
+      - main
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -18,8 +23,13 @@ jobs:
       - name: Run Cypress tests
         run: npm run test
 
-      - name: Upload Cypress screenshots
+      - name: Summarize Test Failures
         if: failure()
+        run: |
+          echo "Tests failed. Please review the logs and uploaded artifacts for more details."
+
+      - name: Upload Cypress screenshots
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-screenshots
@@ -27,9 +37,9 @@ jobs:
           if-no-files-found: ignore
       
       - name: Upload Cypress videos
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
           path: cypress/videos
           if-no-files-found: ignore
-
