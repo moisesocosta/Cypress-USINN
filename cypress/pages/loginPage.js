@@ -10,9 +10,9 @@ class LoginPage{
 
     return selectors
   }
-  accessLoginPage(){
-    cy.visit(`${Cypress.env('BASE_URL2')}/login`)
-  }
+  //accessLoginPage(){
+  //  cy.visit(`${Cypress.env('BASE_URL2')}/login`)
+  //}
 
   loginSuccess(email, password){
     cy.get(this.selectorsList().emailField).type(email)

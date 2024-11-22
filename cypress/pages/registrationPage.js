@@ -19,7 +19,7 @@ class RegistrationPage{
   }
 
   accessRegistrationPage(){
-    cy.visit(`${Cypress.env('BASE_URL2')}/cadastro`)
+    cy.visit('/cadastro')
   }
 
   registrationSomeCredentials(name, birthday, role){

@@ -7,10 +7,10 @@ const dashboardPage = new DashboardPage()
 const diagramEditionPage = new DiagramEditionPage()
 
 describe('CT-US-013 | Baixar diagrama', function(){
-  beforeEach(() => {
+  //beforeEach(() => {
     //Acessa a página de "Login"
-    loginPage.accessLoginPage()
-  })
+    //loginPage.accessLoginPage()
+  //})
 
   it('Cenário 01: Exportar Diagrama com sucesso(Formato PNG)', () => {
     //Faz o login

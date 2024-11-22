@@ -11,10 +11,10 @@ const documentsPage = new DocumentsPage()
 const diagramEditionPage = new DiagramEditionPage()
 
 describe('CT-US-004 | Salvar as alterações realizadas no diagrama', function(){
-  beforeEach(() => {
+  //beforeEach(() => {
     //Acessa a página de "Login"
-    loginPage.accessLoginPage()
-  })
+    //loginPage.accessLoginPage()
+  //})
 
   it('Cenário 01: O sistema salva automaticamente minhas alterações', () => {
     //Faz o login
