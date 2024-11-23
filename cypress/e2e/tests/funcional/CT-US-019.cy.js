@@ -5,10 +5,10 @@ const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 
 describe('CT-US-017 | Atalho para documentos', function(){
-  //beforeEach(() => {
+  beforeEach(() => {
     //Acessa a página de "Login"
-    //loginPage.accessLoginPage()
-  //})
+    loginPage.accessLoginPage()
+  })
 
   it('Cenário 01: Diagrama adicionado com sucesso', () => {
     //Faz o login

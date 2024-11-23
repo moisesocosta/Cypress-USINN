@@ -7,10 +7,10 @@ const dashboardPage = new DashboardPage()
 const diagramEditionPage = new DiagramEditionPage()
 
 describe('CT-US-005 | Desfazer alterações', function(){
-  //beforeEach(() => {
+  beforeEach(() => {
     //Acessa a página de "Login"
-    //loginPage.accessLoginPage()
-  //})
+    loginPage.accessLoginPage()
+  })
 
   it('Cenário 01: Desfazer erros feitos no diagrama', () => {
     //Faz o login

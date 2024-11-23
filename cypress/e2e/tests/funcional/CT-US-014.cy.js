@@ -7,10 +7,10 @@ const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 
 describe('CT-US-014 | Gerenciar compartilhamento de diagramas', function(){
-  //beforeEach(() => {
+  beforeEach(() => {
     //Acessa a página de "Login"
-    //loginPage.accessLoginPage()
-  //})
+    loginPage.accessLoginPage()
+  })
 
   it('Cenário 01: Realizado com sucesso', () => {
     //Faz o login

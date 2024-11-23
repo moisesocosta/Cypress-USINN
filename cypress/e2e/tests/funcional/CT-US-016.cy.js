@@ -7,10 +7,10 @@ const dashboardPage = new DashboardPage()
 const diagramEditionPage = new DiagramEditionPage()
 
 describe('CT-US-016 | Atualizar um diagrama existente', function(){
-  //beforeEach(() => {
+  beforeEach(() => {
     //Acessa a página de "Login"
-    //loginPage.accessLoginPage()
-  //})
+    loginPage.accessLoginPage()
+  })
 
   it('Cenário 01: Diagrama Atualizado com sucesso', () => {
     //Faz o login
