@@ -11,10 +11,10 @@ const dashboardPage = new DashboardPage()
 const diagramEditionPage = new DiagramEditionPage()
 
 describe('CT-US-007 | Sair do sistema', function(){
-  //beforeEach(() => {
+  beforeEach(() => {
     //Acessa a página de "Login"
-    //loginPage.accessLoginPage()
-  //})
+    loginPage.accessLoginPage()
+  })
 
   it.only('Preparo do CT-US-007', () => {
     registrationPage.newRegistration(Cypress.env('USER_NAME'), Cypress.env('USER_BIRTHDAY'), Cypress.env('USER_ROLE'), email, Cypress.env('USER_PASSWORD'), Cypress.env('USER_GENDER'), Cypress.env('USER_COMPANY'))

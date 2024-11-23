@@ -7,10 +7,10 @@ const registrationPage = new RegistrationPage()
 const loginPage = new LoginPage()
 
 describe('CT-US-002 | Acesso ao sistema', function(){
-  //beforeEach(() => {
+  beforeEach(() => {
     //Acessa a página de "Login"
-    //loginPage.accessLoginPage()
-  //})
+    loginPage.accessLoginPage()
+  })
 
   it('Preparo do CT-US-002', () => {
     registrationPage.newRegistration(Cypress.env('USER_NAME'), Cypress.env('USER_BIRTHDAY'), Cypress.env('USER_ROLE'), email, Cypress.env('USER_PASSWORD'), Cypress.env('USER_GENDER'), Cypress.env('USER_COMPANY'))
